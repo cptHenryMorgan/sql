@@ -11,7 +11,7 @@ public class LoginPage {
     private SelenideElement loginField;
     @FindBy(css = "[data-test-id=password] input")
     private SelenideElement passwordField;
-    @FindBy(css = "[data-test-id=action-login] input")
+    @FindBy(css = "[data-test-id=action-login]")
     private SelenideElement loginButton;
     @FindBy(css = "[data-test-id='error-notification']")
     private SelenideElement errorNotification;
