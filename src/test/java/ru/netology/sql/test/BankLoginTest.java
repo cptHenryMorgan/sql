@@ -34,4 +34,16 @@ public class BankLoginTest {
         loginPage.validLogin(authInfo);
         loginPage.verifyErrorNotificationVisiblity();
     }
+
+    @Test
+    @DisplayName("Should get error notification if login with random exist in base and active user and random verification code")
+    void shouldGetErrorNotificationIfLoginWithRandomActiveUserAndRandomVerificationCode() {
+        var loginPage = open("http://localhost:9999", LoginPage.class);
+        var authInfo = DataHelper.getAuthInfoWithTestData();
+        var verificationPage = loginPage.validLogin(authInfo);
+        verificationPage.verifyVerificationPageVisiblity();
+        var verificationCode = DataHelper.generateRandomVerificationCode();
+        verificationPage.verify(verificationCode.getCode());
+        verificationPage.verifyErrorNotificationVisiblity();
+    }
 }
